@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MalzemelerController;
+use App\Http\Controllers\DepoSorumlulariController;
+use App\Http\Controllers\SorumlularController;
+use App\Http\Controllers\FirmalarController;
+use App\Http\Controllers\DepolarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('malzemeler',MalzemelerController::class);
+Route::apiResource('depo-sorumlulari',DepoSorumlulariController::class);
+Route::apiResource('sorumlular',SorumlularController::class);
+Route::apiResource('firmalar',FirmalarController::class);
+Route::apiResource('depolar',DepolarController::class);

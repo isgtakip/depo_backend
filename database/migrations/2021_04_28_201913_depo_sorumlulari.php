@@ -15,8 +15,9 @@ class DepoSorumlulari extends Migration
     {
         //
         Schema::create('depo_sorumlulari', function (Blueprint $table) {
-            $table->id('depo_id');
-            $table->integer('sorunlu_id');
+            $table->id('depo_sorumlu_id');
+            $table->integer('depo_id');
+            $table->integer('sorumlu_id');
         });
     }
 

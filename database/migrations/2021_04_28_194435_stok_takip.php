@@ -14,12 +14,18 @@ class StokTakip extends Migration
     public function up()
     {
         //
-        Schema::create('stok_takip', function (Blueprint $table) {
-            $table->id('stok_takip_id');
+        Schema::create('stok_hareketleri', function (Blueprint $table) {
+            $table->id('hareket_id');
             $table->integer('malzeme_id');
-            $table->integer('irsaliye_id');
             $table->integer('miktar');
-            $table->boolean('durum'); //0 gelen 1 çıkan
+            $table->integer('hareket_tipi'); //giris_cikis
+            $table->dateTime('hareket_tarihi');//date time 
+            $table->integer('depo_id'); //hareket 
+            $table->integer('firma_depo_id');
+            $table->integer('belge_tipi');
+            $table->string('belge_no');
+
+
         });
     }
 
@@ -32,6 +38,6 @@ class StokTakip extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('stok_takip');
+        Schema::dropIfExists('stok_hareketleri');
     }
 }

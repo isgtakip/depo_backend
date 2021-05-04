@@ -40,6 +40,7 @@ class MalzemelerController extends Controller
         $malzeme = new Malzemeler();
         $malzeme->malzeme_adi = $request->malzeme_adi;
         $malzeme->malzeme_birim = $request->malzeme_birim;
+        $malzeme->malzeme_miktar = 0;
         $malzeme->save();
         
         return response()->json($malzeme,200);
