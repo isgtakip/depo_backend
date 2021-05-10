@@ -7,6 +7,7 @@ use App\Http\Controllers\DepoSorumlulariController;
 use App\Http\Controllers\SorumlularController;
 use App\Http\Controllers\FirmalarController;
 use App\Http\Controllers\DepolarController;
+use App\Http\Controllers\StokHareketleriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::apiResource('depo-sorumlulari',DepoSorumlulariController::class);
 Route::apiResource('sorumlular',SorumlularController::class);
 Route::apiResource('firmalar',FirmalarController::class);
 Route::apiResource('depolar',DepolarController::class);
+Route::apiResource('stok-hareketleri',StokHareketleriController::class);

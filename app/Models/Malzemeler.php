@@ -11,11 +11,13 @@ class Malzemeler extends Model
     protected $primaryKey = 'malzeme_id';
     public $timestamps = false;
     protected $casts = [ 'malzeme_miktar' => 'integer'];
-    
+    protected $casts = [ 'miktar' => 'integer'];
+
     protected $fillable = [
         'malzeme_adi',
         'malzeme_birim',
-        'malzeme_miktar'
+        'malzeme_miktar',
+        'depo_id'
     ];
 
     use HasFactory;
