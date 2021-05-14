@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Deposorumlulari extends Model
+class DepoSorumlu extends Model
 {
+
     protected $table = "depo_sorumlulari";
     protected $primaryKey = 'depo_sorumlu_id';
     public $timestamps = false;

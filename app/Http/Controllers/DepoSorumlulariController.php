@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\DepoSorumlulari;
+use App\Models\DepoSorumlu;
 use Illuminate\Http\Request;
 
 class DepoSorumlulariController extends Controller
@@ -23,12 +23,12 @@ class DepoSorumlulariController extends Controller
     private function depo_sorumlularını_getir($id=null){
 
         if($id == null){
-            $deposorumlulari = DepoSorumlulari::join('depolar', 'depolar.depo_id', '=', 'depo_sorumlulari.depo_id')
+            $deposorumlulari = DepoSorumlu::join('depolar', 'depolar.depo_id', '=', 'depo_sorumlulari.depo_id')
             ->join('sorumlular', 'sorumlular.sorumlu_id', '=', 'depo_sorumlulari.sorumlu_id')
             ->get(['depo_sorumlulari.*', 'sorumlular.sorumlu_ad_soyad','depolar.depo_adi']);
         }
         else{
-        $deposorumlulari = DepoSorumlulari::join('depolar', 'depolar.depo_id', '=', 'depo_sorumlulari.depo_id')
+        $deposorumlulari = DepoSorumlu::join('depolar', 'depolar.depo_id', '=', 'depo_sorumlulari.depo_id')
               ->join('sorumlular', 'sorumlular.sorumlu_id', '=', 'depo_sorumlulari.sorumlu_id')
               ->where('depo_sorumlulari.depo_sorumlu_id', $id)
               ->get(['depo_sorumlulari.*', 'sorumlular.sorumlu_ad_soyad','depolar.depo_adi']);
@@ -56,7 +56,7 @@ class DepoSorumlulariController extends Controller
     public function store(Request $request)
     {
         //
-        $depo_sorumlulari= new DepoSorumlulari();
+        $depo_sorumlulari= new DepoSorumlu();
         $depo_sorumlulari->depo_id=$request->depo_id;
         $depo_sorumlulari->sorumlu_id=$request->sorumlu_id;
         $depo_sorumlulari->save();
@@ -98,7 +98,7 @@ class DepoSorumlulariController extends Controller
     public function update(Request $request, $depo_sorumlu_id)
     {
         //
-        $depo_sorumlulari = DepoSorumlulari::find($depo_sorumlu_id);
+        $depo_sorumlulari = DepoSorumlu::find($depo_sorumlu_id);
         $depo_sorumlulari->sorumlu_id = $request->sorumlu_id;
         $depo_sorumlulari->depo_id=$request->depo_id;
         $depo_sorumlulari->update();
@@ -117,7 +117,7 @@ class DepoSorumlulariController extends Controller
     public function destroy($depo_sorumlu_id)
     {
         //
-        DepoSorumlulari::destroy($depo_sorumlu_id); 
+        DepoSorumlu::destroy($depo_sorumlu_id); 
         return response()->json(['depo_sorumlu_id'=>$depo_sorumlu_id],200);
     }
 }
