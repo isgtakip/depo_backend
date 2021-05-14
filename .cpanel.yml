@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/wilary/public_html/stock/depo_backend
+    - export DEPLOYPATH=/home/sarielek/public_html/api
     - /bin/cp -R * $DEPLOYPATH
 
