@@ -14,7 +14,7 @@ class DepoSorumlulariController extends Controller
     public function index()
     {
         //
-        $deposorumlulari = self::depo_sorumlularını_getir();
+        $deposorumlulari = $this->depo_sorumlularını_getir();
         return response()->json($deposorumlulari,200);
     }
 
