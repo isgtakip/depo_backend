@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\models\DepoSorumlulari;
+use App\Models\DepoSorumlulari;
 use Illuminate\Http\Request;
 
 class DepoSorumlulariController extends Controller
