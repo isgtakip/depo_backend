@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
+
 use App\Models\DepoSorumlulari;
 use Illuminate\Http\Request;
-
 
 class DepoSorumlulariController extends Controller
 {
@@ -12,6 +11,8 @@ class DepoSorumlulariController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function index()
     {
         //
