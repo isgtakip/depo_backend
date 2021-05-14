@@ -11,7 +11,7 @@ class Malzemeler extends Model
     protected $primaryKey = 'malzeme_id';
     public $timestamps = false;
 
-    protected $casts = [ 'malzeme_miktar' => 'integer', 'depo_id' => 'integer'];
+    protected $casts = [ 'malzeme_id' => 'integer','malzeme_miktar' => 'integer', 'depo_id' => 'integer'];
 
     protected $fillable = [
         'malzeme_adi',
