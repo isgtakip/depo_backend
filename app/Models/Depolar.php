@@ -12,6 +12,7 @@ class Depolar extends Model
     protected $primaryKey = 'depo_id';
     public $timestamps = false;
 
+
     protected $fillable = [
         'depo_adi',
     ];

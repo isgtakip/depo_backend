@@ -12,6 +12,9 @@ class Sorumlular extends Model
     protected $primaryKey = 'sorumlu_id';
     public $timestamps = false;
 
+    protected $casts = [ 'sorumlu_id' => 'integer'];
+    
+
     protected $fillable = [
         'sorumlu_ad_soyad',
     ];

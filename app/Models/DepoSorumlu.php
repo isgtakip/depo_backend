@@ -12,6 +12,8 @@ class DepoSorumlu extends Model
     protected $primaryKey = 'depo_sorumlu_id';
     public $timestamps = false;
 
+    protected $casts = [ 'depo_id' => 'integer', 'sorumlu_id'  => 'integer'];
+
     protected $fillable = [
         'depo_id',
         'sorumlu_id'
