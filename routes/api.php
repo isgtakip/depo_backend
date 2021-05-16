@@ -56,7 +56,7 @@ Route::post('login', function(Request $request){
 
     $request->session()->regenerate();
 
-    //return response()->json(null, 201);
+    return response()->json(null, 201);
 });
 
 // logout
