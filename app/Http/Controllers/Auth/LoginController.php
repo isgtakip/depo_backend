@@ -21,7 +21,7 @@ class LoginController extends Controller
             
         }
 
-    $request->session()->regenerate();
+   // $request->session()->regenerate();
 
     return  response()-json(null,201)
 
