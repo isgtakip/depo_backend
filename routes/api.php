@@ -9,6 +9,7 @@ use App\Http\Controllers\FirmalarController;
 use App\Http\Controllers\DepolarController;
 use App\Http\Controllers\StokHareketleriController;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Validation\ValidationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,40 @@ Route::apiResource('firmalar',FirmalarController::class);
 Route::apiResource('depolar',DepolarController::class);
 Route::apiResource('stok-hareketleri',StokHareketleriController::class);
 
-Route::post('/login',LoginController::class);
+// register
+Route::get('register', function(Request $request){
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password)
+    ]);
+
+    return $user;
+});
+
+// login
+Route::post('login', function(Request $request){
+    $credentials = $request->only('email', 'password');
+
+    if(! auth()->attempt($credentials)){
+        throw ValidationException::withMessages([
+            'email' => 'Invalid credentials'
+        ]);
+    }
+
+    $request->session()->regenerate();
+
+    return response()->json(null, 201);
+});
+
+// logout
+
+Route::post('logout', function(Request $request){
+    auth()->guard('web')->logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return response()->json(null, 200);
+});
