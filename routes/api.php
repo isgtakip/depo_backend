@@ -8,6 +8,7 @@ use App\Http\Controllers\SorumlularController;
 use App\Http\Controllers\FirmalarController;
 use App\Http\Controllers\DepolarController;
 use App\Http\Controllers\StokHareketleriController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\StokHareketleriController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -30,3 +31,5 @@ Route::apiResource('sorumlular',SorumlularController::class);
 Route::apiResource('firmalar',FirmalarController::class);
 Route::apiResource('depolar',DepolarController::class);
 Route::apiResource('stok-hareketleri',StokHareketleriController::class);
+
+Route::post('/login',LoginController::class);
