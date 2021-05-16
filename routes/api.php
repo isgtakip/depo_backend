@@ -10,7 +10,7 @@ use App\Http\Controllers\DepolarController;
 use App\Http\Controllers\StokHareketleriController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Validation\ValidationException;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
