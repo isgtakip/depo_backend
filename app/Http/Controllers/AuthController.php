@@ -2,22 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Traits\ApiResponser;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class AuthController extends Controller
 {
 
-    public function login(Request $request)
-    {
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return $request->session()->regenerate();
-        }
 
-        return response()->json([
-            'message' => 'Invalid login details'
-        ], 401);
+   use ApiResponser;
+
+
+   public function register(Request $request)
+       {
+           $attr = $request->validate([
+               'name' => 'required|string|max:255',
+               'email' => 'required|string|email|unique:users,email',
+               'password' => 'required|string|min:6|confirmed'
+           ]);
+
+           $user = User::create([
+               'name' => $attr['name'],
+               'password' => bcrypt($attr['password']),
+               'email' => $attr['email']
+           ]);
+
+           return $this->success([
+               'token' => $user->createToken('API Token')->plainTextToken
+           ]);
+       }
+
+
+
+  public function login(Request $request)
+  {
+    $request->validate([
+      'email' => ['required', 'email'],
+      'password' => 'required'
+    ]);
+
+    $credentials = $request->only('email', 'password');
+
+
+
+    if (Auth::attempt($credentials)) {
+
+
+      return $this->success([
+                'token' => auth()->user()->createToken('API Token')->plainTextToken
+            ]);
+      //return response()->json(Auth::user(), 200);
     }
+
+    throw ValidationException::withMessages([
+      'email' => 'The provided credentails are incorect.'
+    ]);
+
+  }
 
     public function logout(Request $request)
     {
