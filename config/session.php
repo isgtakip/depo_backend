@@ -198,5 +198,6 @@ return [
     */
 
     'same_site' => 'none',
+    'path' => '/;SameSite=None; secure',
 
 ];
