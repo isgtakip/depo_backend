@@ -142,8 +142,8 @@ return [
     |
     */
 
-    'path' => '/',
-    //'path' => '/;samesite=none',
+    //'path' => '/',
+     'path' => '/;samesite=none;true',
 
 
 
@@ -171,8 +171,8 @@ return [
     |
     */
 
-    //'secure' => env('SESSION_SECURE_COOKIE'),
-    'secure' => true,
+    'secure' => env('SESSION_SECURE_COOKIE',true),
+    //'secure' => true,
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only
