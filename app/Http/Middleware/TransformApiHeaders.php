@@ -3,7 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+
 class TransformApiHeaders  { 
 
     public function handle($request, Closure $next) {
