@@ -56,10 +56,12 @@ class AuthController extends Controller
       return $this->success([
                 'token' => auth()->user()->createToken('API Token')->plainTextToken
             ]);
-      
+      */
+
+      return response()->json(Auth::user(), 200);
     }
-    */
-    return response()->json(Auth::user(), 200);
+   
+ 
     throw ValidationException::withMessages([
       'email' => 'The provided credentails are incorect.'
     ]);
