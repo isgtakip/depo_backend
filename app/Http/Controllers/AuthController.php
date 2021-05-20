@@ -52,13 +52,13 @@ class AuthController extends Controller
 
     if (Auth::attempt($credentials)) {
 
-/*
+
       return $this->success([
                 'token' => auth()->user()->createToken('API Token')->plainTextToken
             ]);
-      */
+      
 
-      return response()->json(Auth::user(), 200);
+      //return response()->json(Auth::user(), 200);
     }
    
  
