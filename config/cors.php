@@ -25,7 +25,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost','http://sarielektronik.net'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
