@@ -34,10 +34,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('sorumlular',SorumlularController::class);
     Route::apiResource('firmalar',FirmalarController::class);
     Route::apiResource('depolar',DepolarController::class);
-    Route::apiResource('stok-hareketleri',StokHareketleriController::class);
+  
 });
 
-
+Route::apiResource('stok-hareketleri',StokHareketleriController::class);
 
 
 

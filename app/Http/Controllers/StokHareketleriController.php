@@ -15,15 +15,19 @@ class StokHareketleriController extends Controller
     public function hareket_getir($id=null){
 
           $get_messages=DB::table('stok-hareketleri as s')
-         ->selectRaw('*')
+         ->selectRaw('s.hareket_id,s.miktar,dp.depo_adi,s.belge_no,s.belge_tipi_id,s.hareket_tarihi,m.malzeme_adi,m.malzeme_birim')
          ->selectRaw('IF(s.tedarik_turu=1, f.firma_unvan,d.depo_adi) firma_depo')
          ->selectRaw('IF(s.hareket_tipi=1, "GİRİŞ","ÇIKIŞ") hareket_tipi')
-         ->join('depolar as d', 'd.depo_id', '=', 's.firma_depo_id')
-         ->join('firmalar as f', 'f.firma_id', '=', 's.firma_depo_id')
-         ->join('depolar', 'depolar.depo_id', '=', 's.depo_id')
-         ->join('malzemeler', 'malzemeler.malzeme_id', '=', 's.malzeme_id')
+
+         ->leftJoin('depolar as d', 'd.depo_id', '=', 's.firma_depo_id')
+         ->leftJoin('firmalar as f', 'f.firma_id', '=', 's.firma_depo_id')
+         ->leftJoin('malzemeler as m', 'm.malzeme_id', '=', 's.malzeme_id')
+         ->leftJoin('depolar as dp','dp.depo_id', '=', 's.depo_id')
+         
          ->whereIn('hareket_id', $id)
          ->get();
+
+
 
          return $get_messages;
     }
@@ -32,13 +36,13 @@ class StokHareketleriController extends Controller
     {
          //tedarik turu 1 ise
          $get_messages=DB::table('stok-hareketleri as s')
-         ->selectRaw('*')
+         ->selectRaw('s.hareket_id,s.miktar,dp.depo_adi,s.belge_no,s.belge_tipi_id,s.hareket_tarihi,m.malzeme_adi,m.malzeme_birim')
          ->selectRaw('IF(s.tedarik_turu=1, f.firma_unvan,d.depo_adi) firma_depo')
          ->selectRaw('IF(s.hareket_tipi=1, "GİRİŞ","ÇIKIŞ") hareket_tipi')
-         ->join('depolar as d', 'd.depo_id', '=', 's.firma_depo_id')
-         ->join('firmalar as f', 'f.firma_id', '=', 's.firma_depo_id')
-         ->join('depolar', 'depolar.depo_id', '=', 's.depo_id')
-         ->join('malzemeler', 'malzemeler.malzeme_id', '=', 's.malzeme_id')
+         ->leftJoin('depolar as d', 'd.depo_id', '=', 's.firma_depo_id')
+         ->leftJoin('firmalar as f', 'f.firma_id', '=', 's.firma_depo_id')
+         ->leftJoin('malzemeler as m', 'm.malzeme_id', '=', 's.malzeme_id')
+         ->leftJoin('depolar as dp','dp.depo_id', '=', 's.depo_id')
          ->get();
 
 
