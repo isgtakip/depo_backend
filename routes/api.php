@@ -10,6 +10,8 @@ use App\Http\Controllers\DepolarController;
 use App\Http\Controllers\StokHareketleriController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\AbilitesController;
+
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //
     Route::apiResource('malzemeler',MalzemelerController::class);
@@ -34,10 +38,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('sorumlular',SorumlularController::class);
     Route::apiResource('firmalar',FirmalarController::class);
     Route::apiResource('depolar',DepolarController::class);
-  
+    Route::apiResource('stok-hareketleri',StokHareketleriController::class);
+    Route::apiResource('roles', RoleController::class);
+    Route::apiResource('users', UserController::class);
+    Route::get('getAllPermissionsAttribute', [AbilitesController::class, 'getAllPermissionsAttribute']);
+    Route::get('getRoles', [AbilitesController::class, 'getRoles']);
 });
 
-Route::apiResource('stok-hareketleri',StokHareketleriController::class);
+
 
 
 
