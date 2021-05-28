@@ -18,8 +18,8 @@ class Malzemeler extends Migration
             $table->id('malzeme_id');
             $table->string('malzeme_adi');
             $table->string('malzeme_birim');
-            $table->string('sap_kod');
-            $table->string('m_aciklama');
+            $table->string('sap_kod')->nullable();
+            $table->string('m_aciklama')->nullable();
         });
 
     }
