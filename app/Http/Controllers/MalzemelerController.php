@@ -53,6 +53,8 @@ class MalzemelerController extends Controller
         $malzeme = new Malzemeler();
         $malzeme->malzeme_adi = $request->malzeme_adi;
         $malzeme->malzeme_birim = $request->malzeme_birim;
+        $malzeme->m_aciklama = $request->m_aciklama;
+        $malzeme->sap_kod = $request->sap_kod;
         $malzeme->save();
 
         return response()->json($malzeme,200);
@@ -93,6 +95,8 @@ class MalzemelerController extends Controller
         $malzeme = Malzemeler::find($malzeme_id);
         $malzeme->malzeme_adi = $request->malzeme_adi;
         $malzeme->malzeme_birim=$request->malzeme_birim;
+        $malzeme->m_aciklama = $request->m_aciklama;
+        $malzeme->sap_kod = $request->sap_kod;
         $malzeme->update();
 
         //firma bilgileri geri döndürülecek daha sonra
