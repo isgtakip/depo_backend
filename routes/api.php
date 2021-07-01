@@ -12,6 +12,10 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\AbilitesController;
 
+use Illuminate\Support\Facades\Hash;
+
+
+
 use App\Models\User;
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +48,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('getAllPermissionsAttribute', [AbilitesController::class, 'getAllPermissionsAttribute']);
     Route::get('getRoles', [AbilitesController::class, 'getRoles']);
 });
+
+
 
 
 
