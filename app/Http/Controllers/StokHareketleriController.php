@@ -85,6 +85,8 @@ class StokHareketleriController extends Controller
 
          }
 
+
+
          StokHareketleri::insert($hareketler);
          $lastIds = StokHareketleri::orderBy('hareket_id', 'desc')->take($total)->pluck('hareket_id');
          return response()->json(self::hareket_getir($lastIds), 200);
@@ -97,9 +99,17 @@ class StokHareketleriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($belge_no)
     {
         //
+        $get_messages=DB::table('stok_hareketleri as s')
+        ->selectRaw('s.hareket_id,s.miktar,m.malzeme_adi,m.malzeme_birim')
+        ->leftJoin('malzemeler as m', 'm.malzeme_id', '=', 's.malzeme_id')
+        ->where('belge_no', $belge_no)
+        ->get();
+
+        //$hareket = StokHareketleri::where('belge_no', $belge_no)->get();
+         return response()->json($get_messages,200);
     }
 
     /**

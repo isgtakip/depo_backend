@@ -12,6 +12,8 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\AbilitesController;
 use App\Http\Controllers\BelgeHareketleriController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Hash;
 
