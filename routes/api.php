@@ -11,6 +11,7 @@ use App\Http\Controllers\StokHareketleriController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\AbilitesController;
+use App\Http\Controllers\BelgeHareketleriController;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -48,6 +49,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('getAllPermissionsAttribute', [AbilitesController::class, 'getAllPermissionsAttribute']);
     Route::get('getRoles', [AbilitesController::class, 'getRoles']);
 });
+
+Route::apiResource('belge-hareketleri',BelgeHareketleriController::class);
 
 
 

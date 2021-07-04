@@ -134,5 +134,7 @@ class StokHareketleriController extends Controller
     public function destroy($id)
     {
         //
+          StokHareketleri::destroy($hareket_id);
+          return response()->json(['hareket_id'=>$hareket_id],200);
     }
 }
