@@ -48,9 +48,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('users', UserController::class);
     Route::get('getAllPermissionsAttribute', [AbilitesController::class, 'getAllPermissionsAttribute']);
     Route::get('getRoles', [AbilitesController::class, 'getRoles']);
+    Route::apiResource('belge-hareketleri',BelgeHareketleriController::class);
 });
 
-Route::apiResource('belge-hareketleri',BelgeHareketleriController::class);
+
 
 
 
